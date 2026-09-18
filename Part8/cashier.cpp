@@ -44,7 +44,6 @@ void cashier()
     	
     	cout << "Do you want to add another order? (1 for yes, 0 for no)" << endl;
     	cin >> choice;
-		cin.ignore();
 	} while(choice == 1);
 	
 	cout << "Thank You for Shopping at Serendipity!";

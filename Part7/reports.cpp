@@ -45,7 +45,7 @@ void reports()
 	} while(choice != 7);
 }
 
-void repList() {
+void repListing() {
     cout << "You selected Inventory Listing." << endl;
 }
 
