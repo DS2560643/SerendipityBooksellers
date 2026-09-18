@@ -7,14 +7,12 @@ void bookinfo(string isbn, string title, string author, string publisher, string
     cout << " Serendipity Booksellers\n";
 	cout << " Book Information\n\n";
 
-	cout << "ISBN: " << isbn;
-	cout << "Title: " << title;
-	cout << "Author: " << author;
-	cout << "Publisher: " << publisher;
-	cout << "Date Added: " << date;
-	cout << "Quantity-On-Hand: " << qty;
-	cout << "Wholesale Cost: " << wholesale;
-	cout << "Retail Price: " << retail;
-	
-	cout << "ISBN:\nTitle:\nAuthor:\nPublisher:\nDate Added:\nQuantity-On-Hand:\nWholesale Cost:\nRetail Price:";
+	cout << "ISBN: " << isbn << endl;
+	cout << "Title: " << title << endl;
+	cout << "Author: " << author << endl;
+	cout << "Publisher: " << publisher << endl;
+	cout << "Date Added: " << date << endl;
+	cout << "Quantity-On-Hand: " << qty << endl;
+	cout << "Wholesale Cost: " << wholesale << endl;
+	cout << "Retail Price: " << retail << endl;
 }
