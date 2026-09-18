@@ -27,6 +27,7 @@ void invmenu()
 	cout << "Enter Your Choice: ";
 	
 	cin >> choice;
+    cin.ignore();
     switch(choice) {
         case 1:
             lookUpBook();
@@ -51,11 +52,56 @@ void invmenu()
 }
 
 void lookUpBook() {
-    cout << "You selected Look Up Book." << endl;
+    string titleKey;
+    cout << "Book Title: ";
+    getline(cin, titleKey);
+
+    for(int i = 0; i < SIZE; i++) {
+        if(bookTitle[i] == titleKey) {
+            cout << endl;
+            bookinfo(isbn[i], bookTitle[i], author[i], publisher[i], dateAdded[i], qtyOnHand[i], wholesale[i], retail[i]);
+            return;
+        }
+    }
+
+    cout << "No book with that title was found" << endl;
 }
 
 void addBook() {
-    cout << "You selected Add Book." << endl;
+    int addIndex = 0;
+    while(addIndex < SIZE && bookTitle[addIndex] != "" && bookTitle[addIndex][0] != '\0') {
+        addIndex++;
+    }
+
+    if(addIndex >= SIZE) {
+        cout << "Not enough space to add!" << endl;
+    } else {
+        cout << "Book Title: ";
+        getline(cin, bookTitle[addIndex]);
+        
+        cout << "ISBN: ";
+        getline(cin, isbn[addIndex]);
+        
+        cout << "Author: ";
+        getline(cin, author[addIndex]);
+        
+        cout << "Publisher: ";
+        getline(cin, publisher[addIndex]);
+        
+        cout << "Date Added: ";
+        getline(cin, dateAdded[addIndex]);
+
+        cout << "Quantity: ";
+        cin >> qtyOnHand[addIndex];
+
+        cout << "Wholesale Cost: ";
+        cin >> wholesale[addIndex];
+        
+        cout << "Retail Price: ";
+        cin >> retail[addIndex];
+
+        cin.ignore();
+    }
 }
 
 void editBook() {
