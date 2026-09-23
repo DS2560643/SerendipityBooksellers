@@ -127,31 +127,63 @@ void editBook() {
 
     cout << endl;
 
-    cout << "Book Title: ";
-    getline(cin, bookTitle[editIndex]);
-    
-    cout << "ISBN: ";
-    getline(cin, isbn[editIndex]);
-    
-    cout << "Author: ";
-    getline(cin, author[editIndex]);
-    
-    cout << "Publisher: ";
-    getline(cin, publisher[editIndex]);
-    
-    cout << "Date Added: ";
-    getline(cin, dateAdded[editIndex]);
+    int choice = 0;
 
-    cout << "Quantity: ";
-    cin >> qtyOnHand[editIndex];
+    do {
+        cout << "What do you want to change? Title (1), ISBN (2), Author (3), Publisher (4), Date (5), Quantity (6), Wholesale Price (7), Retail Price (8)" << endl << "If you'd like to exit, type 9: ";
+        cin >> choice;
+        cin.ignore();
 
-    cout << "Wholesale Cost: ";
-    cin >> wholesale[editIndex];
-    
-    cout << "Retail Price: ";
-    cin >> retail[editIndex];
+        switch(choice) {
+            case 1:
+                cout << "Book Title: ";
+                getline(cin, bookTitle[editIndex]);
+                cin.ignore();
+                break;
+            case 2:
+                cout << "ISBN: ";
+                getline(cin, isbn[editIndex]);
+                cin.ignore();
+                break;
+            case 3:
+                cout << "Author: ";
+                getline(cin, author[editIndex]);
+                cin.ignore();
+                break;
+            case 4:
+                cout << "Publisher: ";
+                getline(cin, publisher[editIndex]);
+                cin.ignore();
+                break;
+            case 5:
+                cout << "Date Added: ";
+                getline(cin, dateAdded[editIndex]);
+                cin.ignore();
+                break;
+            case 6:
+                cout << "Quantity: ";
+                cin >> qtyOnHand[editIndex];
+                cin.ignore();
+                break;
+            case 7:
+                cout << "Wholesale Cost: ";
+                cin >> wholesale[editIndex];
+                cin.ignore();
+                break;
+            case 8:
+                cout << "Retail Price: ";
+                cin >> retail[editIndex];
+                cin.ignore();
+                break;
+            case 9:
+                cout << "Terminating" << endl;
+                break;
+            default:
+                cout << "\nPlease enter a number from 1 to 9" << endl;
+                break;
+        }
+    } while(choice != 9);                
 
-    cin.ignore();
 }
 
 void deleteBook() {string titleKey;
