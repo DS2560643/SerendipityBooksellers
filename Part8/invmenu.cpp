@@ -22,7 +22,7 @@ void invmenu()
 	
 	
 	do {
-	cout << "1.  Look Up a Book\n2.  Add a Book\n3.  Edit a Book's Record\n4.  Delete a Book\n5.  Return to the Main Menu\n\n";
+	cout << endl << "1.  Look Up a Book\n2.  Add a Book\n3.  Edit a Book's Record\n4.  Delete a Book\n5.  Return to the Main Menu\n\n";
 	
 	cout << "Enter Your Choice: ";
 	
@@ -105,9 +105,90 @@ void addBook() {
 }
 
 void editBook() {
-    cout << "You selected Edit Book." << endl;
+    string titleKey;
+    cout << "Book Title: ";
+    getline(cin, titleKey);
+
+    bool found = false;
+    int editIndex = -1;
+    for(int i = 0; i < SIZE && !found; i++) {
+        if(bookTitle[i] == titleKey) {
+            cout << endl;
+            bookinfo(isbn[i], bookTitle[i], author[i], publisher[i], dateAdded[i], qtyOnHand[i], wholesale[i], retail[i]);
+            editIndex = i;
+            found = true;
+        }
+    }
+
+    if(!found) {
+        cout << "Could not find book" << endl;
+        return;
+    }
+
+    cout << endl;
+
+    cout << "Book Title: ";
+    getline(cin, bookTitle[editIndex]);
+    
+    cout << "ISBN: ";
+    getline(cin, isbn[editIndex]);
+    
+    cout << "Author: ";
+    getline(cin, author[editIndex]);
+    
+    cout << "Publisher: ";
+    getline(cin, publisher[editIndex]);
+    
+    cout << "Date Added: ";
+    getline(cin, dateAdded[editIndex]);
+
+    cout << "Quantity: ";
+    cin >> qtyOnHand[editIndex];
+
+    cout << "Wholesale Cost: ";
+    cin >> wholesale[editIndex];
+    
+    cout << "Retail Price: ";
+    cin >> retail[editIndex];
+
+    cin.ignore();
 }
 
-void deleteBook() {
-    cout << "You selected Delete Book." << endl;
+void deleteBook() {string titleKey;
+    cout << "Book Title: ";
+    getline(cin, titleKey);
+
+    bool found = false;
+    int deleteIndex = -1;
+    for(int i = 0; i < SIZE && !found; i++) {
+        if(bookTitle[i] == titleKey) {
+            cout << endl;
+            bookinfo(isbn[i], bookTitle[i], author[i], publisher[i], dateAdded[i], qtyOnHand[i], wholesale[i], retail[i]);
+            deleteIndex = i;
+            found = true;
+        }
+    }
+
+    if(!found) {
+        cout << "Could not find book" << endl;
+        return;
+    }
+
+
+    char ans;
+    
+    cout << endl << "Are you sure you wish to delete this book? (y/n): ";
+    cin >> ans;
+    cin.ignore();
+
+    while(ans != 'n' && ans != 'y') {
+        cout << "Either y or n: ";
+    }
+
+    if(ans == 'y') {
+        bookTitle[deleteIndex] = "";
+        isbn[deleteIndex] = "";
+    } else if(ans == 'n') {
+        cout << "Terminating" << endl;
+    }
 }
