@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-void bookinfo()
+void bookInfo()
 {
     cout << " Serendipity Booksellers\n";
 	cout << " Book Information\n\n";

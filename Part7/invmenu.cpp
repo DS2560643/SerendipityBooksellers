@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-void invmenu()
+void invMenu()
 {
 	cout << " Serendipity Booksellers\n";
 	cout << " Inventory Databases\n\n";

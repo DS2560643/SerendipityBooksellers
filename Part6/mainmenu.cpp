@@ -8,14 +8,15 @@ using namespace std;
 
 int main()
 {
-	cout << " Serendipity Booksellers" << endl;
-	cout << "\tMain Menu\n" << endl;
-	cout << "1.  Cashier Module\n2.  Inventory Dashboard Module\n3.  Report Module\n4.  Exit\n" << endl;
     
     
     int choice; 
     do {
     
+        cout << " Serendipity Booksellers" << endl;
+        cout << "\tMain Menu\n" << endl;
+        cout << "1.  Cashier Module\n2.  Inventory Database Module\n3.  Report Module\n4.  Exit\n" << endl;
+
         cout << "Enter Your Choice: ";
         cin >> choice;
         cin.ignore();
@@ -26,7 +27,7 @@ int main()
                 cashier();
                 break;
             case 2:
-                invmenu();
+                invMenu();
                 break;
             case 3:
                 reports();

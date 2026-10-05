@@ -1,11 +1,14 @@
 #include "cashier.h"
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 void cashier()
 {
     
 	cout << "Serendipity Book Sellers\n\n";
+
+	cout << fixed << setprecision(2) << setw(6); 
 	
 	int choice = 0;
 	
@@ -33,9 +36,9 @@ void cashier()
         cin >> price;
         cin.ignore();
     	
-    	cout << "Qty\t\tISBN\t\tTitle\t\t\t\tPrice\t\tTotal\n";
+    	cout << "Date\t\tQty\t\tISBN\t\tTitle\t\t\t\tPrice\t\tTotal\n";
     	cout << "_________________________________________________________________________________________\n";
-    	cout << qty << "\t\t" << isbn << "\t\t" << title << "\t\t\t\t" << "$ " << price << "\t\t" << "$ " << price*qty << endl;
+    	cout << date << "\t\t" << qty << "\t\t" << isbn << "\t\t" << title << "\t\t\t\t" << "$ " << price << "\t\t" << "$ " << price*qty << endl;
     	
     	
     	cout << "\t\tSubtotal\t\t\t\t\t$ " << qty*price << endl;
