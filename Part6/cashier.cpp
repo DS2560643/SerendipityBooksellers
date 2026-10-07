@@ -8,7 +8,7 @@ void cashier()
     
 	cout << "Serendipity Book Sellers\n\n";
 
-	cout << fixed << setprecision(2) << setw(6); 
+	cout << fixed << setprecision(2); 
 
 	
 	char choice = 'n';
@@ -38,12 +38,12 @@ void cashier()
     	
     	cout << "Date\t\tQty\t\tISBN\t\tTitle\t\t\t\tPrice\t\tTotal\n";
     	cout << "_________________________________________________________________________________________\n";
-    	cout << date << "\t\t" << qty << "\t\t" << isbn << "\t\t" << title << "\t\t\t\t" << "$ " << price << "\t\t" << "$ " << price*qty << endl;
+    	cout << date << "\t\t" << qty << "\t\t" << setw(14) << isbn << "\t\t" << setw(26) << title << "\t\t\t\t" << "$ " << setw(6) << price << "\t\t" << "$ " << setw(6) << price*qty << endl;
     	
     	
-    	cout << "\t\tSubtotal\t\t\t\t\t$ " << qty*price << endl;
-    	cout << "\t\tTax\t\t\t\t\t\t$ " << 0.06*qty*price << endl;
-    	cout << "\t\tTotal\t\t\t\t\t\t$ " << 1.06*qty*price << endl;
+    	cout << "\t\tSubtotal\t\t\t\t\t$ " << setw(6) << qty*price << endl;
+    	cout << "\t\tTax\t\t\t\t\t\t$ " << setw(6) << 0.06*qty*price << endl;
+    	cout << "\t\tTotal\t\t\t\t\t\t$ " << setw(6) << 1.06*qty*price << endl;
     	
     	cout << "Do you want to add another order? (y for yes, n for no)" << endl;
     	cin >> choice;
