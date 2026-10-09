@@ -14,7 +14,7 @@ extern int qtyOnHand[SIZE];
 extern double wholesale[SIZE];
 extern double retail[SIZE];
 
-void invmenu()
+void invMenu()
 {
 	cout << " Serendipity Booksellers\n";
 	cout << " Inventory Databases\n\n";
@@ -52,6 +52,10 @@ void invmenu()
 }
 
 void lookUpBook() {
+    // for(int i = 0; i < SIZE; i++) {
+    //     bookInfo(isbn[i], bookTitle[i], author[i], publisher[i], dateAdded[i], qtyOnHand[i], wholesale[i], retail[i]);
+    // }
+
     string titleKey;
     cout << "Book Title: ";
     getline(cin, titleKey);
@@ -59,7 +63,7 @@ void lookUpBook() {
     for(int i = 0; i < SIZE; i++) {
         if(bookTitle[i] == titleKey) {
             cout << endl;
-            bookinfo(isbn[i], bookTitle[i], author[i], publisher[i], dateAdded[i], qtyOnHand[i], wholesale[i], retail[i]);
+            bookInfo(isbn[i], bookTitle[i], author[i], publisher[i], dateAdded[i], qtyOnHand[i], wholesale[i], retail[i]);
             return;
         }
     }
@@ -68,12 +72,16 @@ void lookUpBook() {
 }
 
 void addBook() {
-    int addIndex = 0;
-    while(addIndex < SIZE && bookTitle[addIndex] != "" && bookTitle[addIndex][0] != '\0') {
-        addIndex++;
+    int addIndex = -1;
+    bool found = false;
+    for(int i = 0; i < SIZE && !found; i++) {
+        if(bookTitle[i] == "" || bookTitle[i][0] == '\0') {
+            addIndex = i;
+            found = true;
+        }
     }
 
-    if(addIndex >= SIZE) {
+    if(addIndex == -1) {
         cout << "Not enough space to add!" << endl;
     } else {
         cout << "Book Title: ";
@@ -114,7 +122,7 @@ void editBook() {
     for(int i = 0; i < SIZE && !found; i++) {
         if(bookTitle[i] == titleKey) {
             cout << endl;
-            bookinfo(isbn[i], bookTitle[i], author[i], publisher[i], dateAdded[i], qtyOnHand[i], wholesale[i], retail[i]);
+            bookInfo(isbn[i], bookTitle[i], author[i], publisher[i], dateAdded[i], qtyOnHand[i], wholesale[i], retail[i]);
             editIndex = i;
             found = true;
         }
@@ -195,7 +203,7 @@ void deleteBook() {string titleKey;
     for(int i = 0; i < SIZE && !found; i++) {
         if(bookTitle[i] == titleKey) {
             cout << endl;
-            bookinfo(isbn[i], bookTitle[i], author[i], publisher[i], dateAdded[i], qtyOnHand[i], wholesale[i], retail[i]);
+            bookInfo(isbn[i], bookTitle[i], author[i], publisher[i], dateAdded[i], qtyOnHand[i], wholesale[i], retail[i]);
             deleteIndex = i;
             found = true;
         }
@@ -209,18 +217,18 @@ void deleteBook() {string titleKey;
 
     char ans;
     
-    cout << endl << "Are you sure you wish to delete this book? (y/n): ";
+    cout << endl << "Are you sure you wish to delete this book? (Y/N): ";
     cin >> ans;
     cin.ignore();
 
-    while(ans != 'n' && ans != 'y') {
+    while(ans != 'N' && ans != 'Y') {
         cout << "Either y or n: ";
     }
 
-    if(ans == 'y') {
+    if(ans == 'Y') {
         bookTitle[deleteIndex] = "";
         isbn[deleteIndex] = "";
-    } else if(ans == 'n') {
+    } else if(ans == 'N') {
         cout << "Terminating" << endl;
     }
 }

@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-void bookinfo(string isbn, string title, string author, string publisher, string date, int qty, double wholesale, double retail)
+void bookInfo(string isbn, string title, string author, string publisher, string date, int qty, double wholesale, double retail)
 {
     cout << " Serendipity Booksellers\n";
 	cout << " Book Information\n\n";
