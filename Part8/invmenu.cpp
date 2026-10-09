@@ -27,7 +27,6 @@ void invMenu()
 	cout << "Enter Your Choice: ";
 	
 	cin >> choice;
-    cin.ignore();
     switch(choice) {
         case 1:
             lookUpBook();
@@ -56,22 +55,27 @@ void lookUpBook() {
     //     bookInfo(isbn[i], bookTitle[i], author[i], publisher[i], dateAdded[i], qtyOnHand[i], wholesale[i], retail[i]);
     // }
 
-    string titleKey;
-    cout << "Book Title: ";
-    getline(cin, titleKey);
+    cin.ignore();
 
-    for(int i = 0; i < SIZE; i++) {
-        if(bookTitle[i] == titleKey) {
-            cout << endl;
-            bookInfo(isbn[i], bookTitle[i], author[i], publisher[i], dateAdded[i], qtyOnHand[i], wholesale[i], retail[i]);
-            return;
-        }
-    }
+    cout << "Enter book title: ";
+	string bookName;
+	cin.ignore();
+	getline(cin, bookName);
 
-    cout << "No book with that title was found" << endl;
+	bool found = false;
+	for(int i = 0; i < SIZE; i++){
+		if(bookTitle[i] == bookName && !found){
+			bookInfo(bookTitle[i], isbn[i], author[i], publisher[i], dateAdded[i], qtyOnHand[i], wholesale[i], retail[i]);
+			found = true;
+		}
+	}
+	if(!found){
+		cout << "Book not found." << endl;
+	}
 }
 
 void addBook() {
+    cin.ignore();
     int addIndex = -1;
     bool found = false;
     for(int i = 0; i < SIZE && !found; i++) {
@@ -81,7 +85,7 @@ void addBook() {
         }
     }
 
-    if(addIndex == -1) {
+    if(!found) {
         cout << "Not enough space to add!" << endl;
     } else {
         cout << "Book Title: ";
@@ -113,6 +117,7 @@ void addBook() {
 }
 
 void editBook() {
+    cin.ignore();
     string titleKey;
     cout << "Book Title: ";
     getline(cin, titleKey);
@@ -145,43 +150,43 @@ void editBook() {
         switch(choice) {
             case 1:
                 cout << "Book Title: ";
-                getline(cin, bookTitle[editIndex]);
                 cin.ignore();
+                getline(cin, bookTitle[editIndex]);
                 break;
             case 2:
                 cout << "ISBN: ";
-                getline(cin, isbn[editIndex]);
                 cin.ignore();
+                getline(cin, isbn[editIndex]);
                 break;
             case 3:
                 cout << "Author: ";
-                getline(cin, author[editIndex]);
                 cin.ignore();
+                getline(cin, author[editIndex]);
                 break;
             case 4:
                 cout << "Publisher: ";
-                getline(cin, publisher[editIndex]);
                 cin.ignore();
+                getline(cin, publisher[editIndex]);
                 break;
             case 5:
                 cout << "Date Added: ";
-                getline(cin, dateAdded[editIndex]);
                 cin.ignore();
+                getline(cin, dateAdded[editIndex]);
                 break;
             case 6:
                 cout << "Quantity: ";
-                cin >> qtyOnHand[editIndex];
                 cin.ignore();
+                cin >> qtyOnHand[editIndex];
                 break;
             case 7:
                 cout << "Wholesale Cost: ";
-                cin >> wholesale[editIndex];
                 cin.ignore();
+                cin >> wholesale[editIndex];
                 break;
             case 8:
                 cout << "Retail Price: ";
-                cin >> retail[editIndex];
                 cin.ignore();
+                cin >> retail[editIndex];
                 break;
             case 9:
                 cout << "Terminating" << endl;
@@ -194,7 +199,9 @@ void editBook() {
 
 }
 
-void deleteBook() {string titleKey;
+void deleteBook() {
+    cin.ignore();
+    string titleKey;
     cout << "Book Title: ";
     getline(cin, titleKey);
 
