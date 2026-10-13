@@ -55,7 +55,7 @@ void lookUpBook() {
     //     bookInfo(isbn[i], bookTitle[i], author[i], publisher[i], dateAdded[i], qtyOnHand[i], wholesale[i], retail[i]);
     // }
 
-    cin.ignore();
+    // cin.ignore();
 
     cout << "Enter book title: ";
 	string bookName;
@@ -117,9 +117,9 @@ void addBook() {
 }
 
 void editBook() {
-    cin.ignore();
     string titleKey;
     cout << "Book Title: ";
+    cin.ignore();
     getline(cin, titleKey);
 
     bool found = false;
@@ -145,7 +145,7 @@ void editBook() {
     do {
         cout << "What do you want to change? Title (1), ISBN (2), Author (3), Publisher (4), Date (5), Quantity (6), Wholesale Price (7), Retail Price (8)" << endl << "If you'd like to exit, type 9: ";
         cin >> choice;
-        cin.ignore();
+        // cin.ignore();
 
         switch(choice) {
             case 1:
@@ -218,24 +218,24 @@ void deleteBook() {
 
     if(!found) {
         cout << "Could not find book" << endl;
-        return;
-    }
+    } else {
+        char ans;
+        
+        cout << endl << "Are you sure you wish to delete this book? (Y/N): ";
+        cin >> ans;
+        cin.ignore();
 
+        // while(ans != 'N' && ans != 'Y') {
+        //     cout << "Either y or n: ";
+        //     cin >> ans;
+        //     cin.ignore();
+        // }
 
-    char ans;
-    
-    cout << endl << "Are you sure you wish to delete this book? (Y/N): ";
-    cin >> ans;
-    cin.ignore();
-
-    while(ans != 'N' && ans != 'Y') {
-        cout << "Either y or n: ";
-    }
-
-    if(ans == 'Y') {
-        bookTitle[deleteIndex] = "";
-        isbn[deleteIndex] = "";
-    } else if(ans == 'N') {
-        cout << "Terminating" << endl;
+        if(ans == 'Y') {
+            bookTitle[deleteIndex] = "";
+            isbn[deleteIndex] = "";
+        } else if(ans == 'N') {
+            cout << "Terminating" << endl;
+        }
     }
 }
