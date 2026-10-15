@@ -65,7 +65,7 @@ void lookUpBook() {
 	bool found = false;
 	for(int i = 0; i < SIZE; i++){
 		if(bookTitle[i] == bookName && !found){
-			bookInfo(bookTitle[i], isbn[i], author[i], publisher[i], dateAdded[i], qtyOnHand[i], wholesale[i], retail[i]);
+			bookInfo(isbn[i], bookTitle[i], author[i], publisher[i], dateAdded[i], qtyOnHand[i], wholesale[i], retail[i]);
 			found = true;
 		}
 	}
@@ -231,10 +231,10 @@ void deleteBook() {
         //     cin.ignore();
         // }
 
-        if(ans == 'Y') {
+        if(ans == 'Y' || ans == 'y') {
             bookTitle[deleteIndex] = "";
             isbn[deleteIndex] = "";
-        } else if(ans == 'N') {
+        } else {
             cout << "Terminating" << endl;
         }
     }
