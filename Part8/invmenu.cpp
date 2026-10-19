@@ -100,7 +100,7 @@ void addBook() {
         cout << "Publisher: ";
         getline(cin, publisher[addIndex]);
         
-        cout << "Date Added: ";
+        cout << "Date Added (MM-DD-YYYY): ";
         getline(cin, dateAdded[addIndex]);
 
         cout << "Quantity: ";
@@ -169,7 +169,7 @@ void editBook() {
                 getline(cin, publisher[editIndex]);
                 break;
             case 5:
-                cout << "Date Added: ";
+                cout << "Date Added (MM-DD-YYYY): ";
                 cin.ignore();
                 getline(cin, dateAdded[editIndex]);
                 break;
