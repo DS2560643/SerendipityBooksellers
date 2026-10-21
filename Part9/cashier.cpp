@@ -1,6 +1,7 @@
 #include "cashier.h"
 #include <iostream>
 #include <iomanip>
+#include <vector>
 using namespace std;
 
 
@@ -30,20 +31,23 @@ void cashier()
 
 	double total = 0;
 	
+	vector<string> dates;
+	vector<int> quantities;
+	vector<string> isbns;
+	vector<string> titles;
+	vector<double> prices;
+
 	do {
+		
     	cout << "Date: ";
     	string date;
     	getline(cin, date);
     	
-    	cout << "Quantity of Book: ";
-    	int qty;
-    	cin >> qty;
-    	cin.ignore();
-    	
-		char newIsbn = 'n';
+		char newIsbn;
 		int index = -1;
 		string isbnIn;
     	do {
+			newIsbn = 'n';
 			cout << "ISBN: ";
 			getline(cin, isbnIn);
 			
@@ -61,6 +65,13 @@ void cashier()
 			}
 		} while(newIsbn == 'y' || newIsbn == 'Y');
 
+		int qty;
+		if(index != -1) {
+			cout << "Quantity of Book: ";
+			cin >> qty;
+			cin.ignore();
+		}
+
 		if(index != -1 && qtyOnHand[index] >= qty) {
 		
 			string title = bookTitle[index];
@@ -70,15 +81,21 @@ void cashier()
 			qtyOnHand[index]-=qty;
 			
 			
-			cout << setw(5) << "Date" << setw(26) << "Quantity" << setw(14) << "ISBN" << setw(26) << "Title" << setw(26) << "Price" << setw(19) << "Total" << setw(9) << endl;
-			cout << "______________________________________________________________________________________________________________________________________________\n";
-			cout << setw(5) << date << setw(26) << qty << setw(14) << isbnIn << setw(26) << title << setw(26) << "$ " << price << setw(16) << "$ " << price*qty << setw(6) << endl;
+			// cout << setw(5) << "Date" << setw(26) << "Quantity" << setw(14) << "ISBN" << setw(26) << "Title" << setw(26) << "Price" << setw(19) << "Total" << setw(9) << endl;
+			// cout << "______________________________________________________________________________________________________________________________________________\n";
+			// cout << setw(5) << date << setw(26) << qty << setw(14) << isbnIn << setw(26) << title << setw(26) << "$ " << price << setw(16) << "$ " << price*qty << setw(6) << endl;
 			
+			cout << "Title: " << title << endl;
+			cout << "Price: " << price << endl;
+
 			total+=qty*price;
 
-		}
-
-		if(index != -1 && qtyOnHand[index] < qty) {
+			dates.push_back(date);
+			quantities.push_back(qty);
+			isbns.push_back(isbnIn);
+			titles.push_back(title);
+			prices.push_back(price);
+		} else if(index != -1 && qtyOnHand[index] < qty) {
 			cout << "There aren't enough books in stock for you to buy" << endl;
 		}
 
@@ -86,10 +103,19 @@ void cashier()
 		cin >> choice;
 		cin.ignore();
 	} while(choice == 'y');
-
-	cout << "\t\tSubtotal\t\t\t\t\t$ " << setw(6) << total << endl;
-	cout << "\t\tTax\t\t\t\t\t\t$ " << setw(6) << 0.06*total << endl;
-	cout << "\t\tTotal\t\t\t\t\t\t$ " << setw(6) << 1.06*total << endl;
 	
-	cout << "Thank You for Shopping at Serendipity!";
+	
+	if(dates.size() != 0) {
+		cout << setw(5) << "Date" << setw(14) << "ISBN" << setw(26) << "Quantity" << setw(26) << "Title" << setw(26) << "Price" << setw(19) << "Total" << setw(9) << endl;
+		cout << "______________________________________________________________________________________________________________________________________________\n";
+		for(int i = 0; i < dates.size(); i++) {
+			cout << setw(5) << dates[i] << setw(14) << isbns[i] << setw(26) << quantities[i] << setw(26) << titles[i] << setw(26) << "$ " << prices[i] << setw(16) << "$ " << prices[i]*quantities[i] << setw(6) << endl;
+		}
+
+		cout << "\t\tSubtotal\t\t\t\t\t$ " << setw(6) << total << endl;
+		cout << "\t\tTax\t\t\t\t\t\t$ " << setw(6) << 0.06*total << endl;
+		cout << "\t\tTotal\t\t\t\t\t\t$ " << setw(6) << 1.06*total << endl;
+		cout << "Thank You for Shopping at Serendipity!";
+	}
+	
 }
