@@ -83,7 +83,8 @@ void repListing() {
         }
     }
 
-    cout << endl << "End of Inventory Report." << endl;
+    cout << endl << "End of Inventory Report." << endl << endl << "Press Enter to continue...";
+    cin.ignore();
 }
 
 
