@@ -1,6 +1,19 @@
 #include "reports.h"
 #include <iostream>
+#include <iomanip>
 using namespace std;
+
+
+const int SIZE = 20;
+
+extern string bookTitle[SIZE];
+extern string isbn[SIZE];
+extern string author[SIZE];
+extern string publisher[SIZE];
+extern string dateAdded[SIZE];
+extern int qtyOnHand[SIZE];
+extern double wholesale[SIZE];
+extern double retail[SIZE];
 
 void reports()
 {
@@ -46,7 +59,31 @@ void reports()
 }
 
 void repListing() {
-    cout << "You selected Inventory Listing." << endl;
+    cin.ignore();
+    string date = "lebron";
+    cout << endl << "Enter Today's Date (MM/DD/YYYY): ";
+    getline(cin, date);
+
+    cout << endl << endl << endl;
+    cout << "\t\tSerendipity Booksellers Inventory Listing" << endl << endl << "Date:" << setw(35) << date << endl << "___________________________________________________________" << endl;
+
+
+    for(int i = 0; i < SIZE; i++) {
+        if(bookTitle[i] != "" && bookTitle[i] != "\0") {
+            cout << endl;
+            cout << "Title:" << setw(34) << bookTitle[i] << endl;
+            cout << "ISBN:" << setw(35) << isbn[i] << endl;
+            cout << "Author:" << setw(33) << author[i] << endl;
+            cout << "Publisher:" << setw(30) << publisher[i] << endl;
+            cout << "Date Added:" << setw(29) << dateAdded[i] << endl;
+            cout << "Quantity on Hand:" << setw(23) << qtyOnHand[i] << endl;
+            cout << "Wholesale Cost:" << setw(25) << wholesale[i] << endl;
+            cout << "Retail:" << setw(33) << retail[i] << endl;
+            cout << "___________________________________________________________" << endl;
+        }
+    }
+
+    cout << endl << "End of Inventory Report." << endl;
 }
 
 

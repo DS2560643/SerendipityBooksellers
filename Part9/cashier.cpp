@@ -21,7 +21,8 @@ extern double retail[SIZE];
 
 void cashier()
 {
-    
+    cin.ignore();
+
 	cout << "Serendipity Book Sellers\n\n";
 
 	cout << fixed << setprecision(2); 
@@ -53,7 +54,7 @@ void cashier()
 			
 			index = -1;
 			for(int i = 0; i < SIZE && index == -1; i++) {
-				if(isbn[i] == isbnIn) {
+				if(isbn[i] != "" && isbn[i] == isbnIn) {
 					index = i;
 				}
 			}
@@ -99,7 +100,7 @@ void cashier()
 			cout << "There aren't enough books in stock for you to buy" << endl;
 		}
 
-		cout << "Do you want to add another order? (y for yes, n for no)" << endl;
+		cout << "Do you want to add another order? (y for yes, n for no): ";
 		cin >> choice;
 		cin.ignore();
 	} while(choice == 'y');

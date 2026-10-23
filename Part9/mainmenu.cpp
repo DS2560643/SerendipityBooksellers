@@ -30,7 +30,6 @@ int main()
         
         cout << "Enter Your Choice: ";
         cin >> choice;
-        cin.ignore();
         
         
         switch(choice) {
