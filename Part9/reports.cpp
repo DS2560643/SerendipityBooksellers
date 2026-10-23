@@ -19,6 +19,8 @@ void reports()
 {
     cout << " Serendipity Booksellers\n";
 	cout << "\tReports\n\n";
+	cout << fixed << setprecision(2);
+
 	int choice;
 	
 	
@@ -59,8 +61,9 @@ void reports()
 }
 
 void repListing() {
+
     cin.ignore();
-    string date = "lebron";
+    string date;
     cout << endl << "Enter Today's Date (MM/DD/YYYY): ";
     getline(cin, date);
 
@@ -89,17 +92,87 @@ void repListing() {
 
 
 void repWholesale() {
-    cout << "You selected Inventory Wholesale Value." << endl;
+    cin.ignore();
+    string date;
+    cout << endl << "Enter Today's Date (MM/DD/YYYY): ";
+    getline(cin, date);
+
+    cout << endl << endl << endl;
+    cout << "\t\tSerendipity Booksellers Wholesale Listing" << endl << endl << "Date:" << setw(35) << date << endl << endl;
+
+    double total = 0;
+
+    cout << setw(20) << "Title" << setw(20) << "ISBN" << setw(20) << "Quantity" << setw(20) << "Wholesale" << endl << "___________________________________________________________" << endl;
+
+    for(int i = 0; i < SIZE; i++) {
+        if(bookTitle[i] != "" && bookTitle[i] != "\0") {
+            cout << endl;
+            cout << setw(20) << bookTitle[i] << setw(20) << isbn[i] << setw(20) << qtyOnHand[i] << setw(20) << wholesale[i] << endl;
+
+            total+=qtyOnHand[i] * wholesale[i];
+        }
+    }
+    cout << "___________________________________________________________" << endl;
+
+    cout << "Total Wholesale Value: " << total << endl;
+
+    cout << endl << "Press Enter to continue...";
+    cin.ignore();
 }
 
 
 void repRetail() {
-    cout << "You selected Inventory Retail Value." << endl;
+    cin.ignore();
+    string date;
+    cout << endl << "Enter Today's Date (MM/DD/YYYY): ";
+    getline(cin, date);
+
+    cout << endl << endl << endl;
+    cout << "\t\tSerendipity Booksellers Retail Listing" << endl << endl << "Date:" << setw(35) << date << endl << endl;
+
+    double total = 0;
+
+    cout << setw(20) << "Title" << setw(20) << "ISBN" << setw(20) << "Quantity" << setw(20) << "Retail" << endl << "___________________________________________________________" << endl;
+
+    for(int i = 0; i < SIZE; i++) {
+        if(bookTitle[i] != "" && bookTitle[i] != "\0") {
+            cout << endl;
+            cout << setw(20) << bookTitle[i] << setw(20) << isbn[i] << setw(20) << qtyOnHand[i] << setw(20) << retail[i] << endl;
+
+            total+=qtyOnHand[i] * retail[i];
+        }
+    }
+    cout << "___________________________________________________________" << endl;
+
+    cout << "Total Retail Value: " << total << endl;
+
+    cout << endl << "Press Enter to continue...";
+    cin.ignore();
 }
 
 
 void repQty() {
-    cout << "You selected Listing By Quantity." << endl;
+    cin.ignore();
+    string date;
+    cout << endl << "Enter Today's Date (MM/DD/YYYY): ";
+    getline(cin, date);
+
+    cout << endl << endl << endl;
+    cout << "\t\tSerendipity Booksellers Quantity Listing" << endl << endl << "Date:" << setw(35) << date << endl << endl;
+
+
+    cout << setw(20) << "Title" << setw(20) << "ISBN" << setw(20) << "Quantity" << endl << "___________________________________________________________" << endl;
+
+    for(int i = 0; i < SIZE; i++) {
+        if(bookTitle[i] != "" && bookTitle[i] != "\0") {
+            cout << endl;
+            cout << setw(20) << bookTitle[i] << setw(20) << isbn[i] << setw(20) << qtyOnHand[i] << endl;
+        }
+    }
+    cout << "___________________________________________________________" << endl;
+
+    cout << endl << "Press Enter to continue...";
+    cin.ignore();
 }
 
 
